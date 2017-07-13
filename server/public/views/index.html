@@ -1,39 +1,125 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Pet Hotel</title>
-  </head>
-  <body>
-    <div class="container">
-      <a href="#">Go to Visits</a>
-      <h1 id="registration">Owner Registration</h1>
-      <input id="fName" type="text" placeholder="First Name">
-      <input id="lName" type="text" placeholder="Last Name">
-      <button type="button" name="button">Register</button>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Pet Hotel</title>
+
+  <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    </head>
+     <body>
+      <!--Registration-->
+       <div class="container">
+        <!-- <a href="#">Go to Visits</a> -->
+        <h4 id="registration">Pet Owner Registration</h1>
+          <form class="form-inline">
+            <label class="sr-only" for="inlineFormInput">Name</label>
+            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="First Name">
+            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Last Name">
+            </div>
+            <button type="submit" class=" register btn btn-outline-success">Register</button>
+          </form>
+       </div><!--Registration-->
+
+       <form class="form-inline">
+         <label class="sr-only" for="inlineFormInput">Name</label>
+         <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="First Name">
+         <label class="sr-only" for="inlineFormInputGroup">Username</label>
+         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+           <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Last Name">
+         </div>
+         <button type="submit" class=" register btn btn-outline-success">Register</button>
+       </form>
+
+
+      <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Owners
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Name 1</a>
+        <a class="dropdown-item" href="#">Name 2</a>
+        <a class="dropdown-item" href="#">Name 3</a>
+      </div>
     </div>
-    <div class="">
-      <h2>Pets</h2>
-      <select name="dropdown">
-        <option id="ownerName1">Name 1</option>
-        <option id="ownerName2" >Name 2</option>
-        <option id="ownerName3">Name 3</option>
-        <input type="text" placeholder="Pet Name">
-        <input type="text" placeholder="Pet Color">
-        <input type="text" placeholder="Breed">
-        <button id="addPet"type="button" name="button">Add Pet</button>
-      </select>
-    </div>
-    <table>
-      <tr>
-        <th>Owner</th>
-        <th>Pet</th>
-        <th>Breed</th>
-        <th>Color</th>
-        <th>Update</th>
-        <th>Delete</th>
-        <th>Check In/Out</th>
-      </tr>
-    </table>
+            <!-- <button id="addPet" type="button" class="btn btn-outline-success">Add Pet</button> -->
+
+          </select>
+       </div><!--/Pets-->
+      <!--Table-->
+      <div class="table">
+        <table class="table table-hover thead-inverse">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Owner</th>
+              <th>Pet</th>
+              <th>Breed</th>
+              <th>Color</th>
+              <th>Update</th>
+              <th>Check-In/Out</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Walt Disney</td>
+              <td>Pluto</td>
+              <td>Bloodhound</td>
+              <td>Brown</td>
+              <td>Test</td>
+              <td>True</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+          </tbody>
+          </table>
+      </div>
+      <!--/Table-->
+
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </body>
 </html>
