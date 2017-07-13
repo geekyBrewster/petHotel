@@ -6,14 +6,14 @@ var poolModule = require('../modules/pool.js');
 var pool = poolModule;
 
 // Send all pets to client from DB using GET request
-router.get('/', function(req, res){
+router.get('/getPets', function(req, res){
   pool.connect(function(errorConnectingToDatabase, db, done){
     if(errorConnectingToDatabase) {
       console.log('Error connecting to the database.');
       res.sendStatus(500);
     } else {
       // **** NEED DATABASE QUERY HERE ****
-      var queryText = ' ';
+      var queryText = 'SELECT * FROM pets;';
       db.query(queryText, function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
@@ -23,6 +23,32 @@ router.get('/', function(req, res){
         } else {
           console.log(queryText);
           res.send({pets: result.rows});
+          // ***** DOUBLE CHECK ORDER OF ITEMS IN THE OBJECT *****
+          // ***** FIX FOR CLIENT-SIDE IF NECESSARY *****
+        }
+      }); // end query
+    } // end if
+  }); // end pool
+}); // end of GET
+
+// Send all customers to client from DB using GET request
+router.get('/getCustomers', function(req, res){
+  pool.connect(function(errorConnectingToDatabase, db, done){
+    if(errorConnectingToDatabase) {
+      console.log('Error connecting to the database.');
+      res.sendStatus(500);
+    } else {
+      // **** NEED DATABASE QUERY HERE ****
+      var queryText = 'SELECT ("last_name", "first_name") FROM owners;';
+      db.query(queryText, function(errorMakingQuery, result){
+        done();
+        if(errorMakingQuery) {
+          console.log('Attempted to query with', queryText);
+          console.log('Error making query');
+          res.sendStatus(500);
+        } else {
+          console.log(queryText);
+          res.send({customers: result.rows});
         }
       }); // end query
     } // end if
@@ -37,8 +63,15 @@ router.post('/newPet', function(req, res){
       res.sendStatus(500);
     } else {
       // **** NEED VARIABLES FROM CLIENT-SIDE ****
+      var pet = req.body;
+      var ownerID = pet.owner;  //Need the owner ID -- NOT name here
+      var name = pet.name;
+      var breed = pet.breed;
+      var color = pet.color;
       // **** NEED DATABASE QUERY TEXT ****
-      db.query(queryText,[$1, $2, $3], function(errorMakingQuery, result){
+      // adding a new pet, but we must make sure we link owner_id
+      var queryText = 'INSERT INTO pets ("name", "breed", "color", "owner_id" ) VALUES ($1, $2, $3, $4);';
+      db.query(queryText,[name, breed, color, owner], function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
           console.log('Attempted to query with', queryText);
@@ -65,7 +98,7 @@ router.post('/newCustomer', function(req, res){
       var first_name = customer.first_name;
       var last_name = customer.last_name;
       // **** NEED DATABASE QUERY TEXT ****
-      var dbText = "INSERT INTO owners ('first_name', 'last_name') VAULES ($1, $2);";
+      var queryText = "INSERT INTO owners ('first_name', 'last_name') VAULES ($1, $2);";
       db.query(queryText,[first_name, last_name], function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
@@ -81,7 +114,7 @@ router.post('/newCustomer', function(req, res){
   }); // end pool
 }); // end of POST
 
-// DELETE task from DB
+// DELETE pet from DB
 router.delete('/:id', function(req, res){
   pool.connect(function(errorConnectingToDatabase, db, done){
     if(errorConnectingToDatabase) {
@@ -90,7 +123,7 @@ router.delete('/:id', function(req, res){
     } else {
       var id = req.params.id;
       // **** NEED DATABASE QUERY TEXT ****
-      var queryText = 'DELETE FROM "todos" WHERE "id"=$1;';
+      var queryText = '';
       db.query(queryText,[id], function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
@@ -163,11 +196,16 @@ router.put('/', function(req, res){
       console.log('Error connecting to the database.');
       res.sendStatus(500);
     } else {
-      var id = req.params.id;
       // **** NEED VARIABLES FROM CLIENT-SIDE ****
+      var id = req.params.id;
+      var updatedPet = req.body;
+      var name = updatedPet.name;
+      var breed = updatedPet.breed;
+      var color = updatedPet.color;
+
       // **** NEED DATABASE QUERY HERE ****
-      var queryText = ' ';
-      db.query(queryText,[id], function(errorMakingQuery, result){
+      var queryText = 'UPDATE pets SET ("name", "breed", "color") = VALUES($1, $2, $3) WHERE "owner_id" = $4;';
+      db.query(queryText,[name, breed, color, id], function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
           console.log('Attempted to query with', queryText);
@@ -175,7 +213,7 @@ router.put('/', function(req, res){
           res.sendStatus(500);
         } else {
             // console.log(queryText);
-          res.send({todos: result.rows});
+          res.send({pets: result.rows});
         }
       }); // end query
     } // end if
