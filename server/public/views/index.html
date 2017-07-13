@@ -5,16 +5,23 @@
     <title>Pet Hotel</title>
   </head>
   <body>
-    <div class="">
+    <div class="container">
       <a href="#">Go to Visits</a>
       <h1 id="registration">Owner Registration</h1>
+      <input id="fName" type="text" placeholder="First Name">
+      <input id="lName" type="text" placeholder="Last Name">
+      <button type="button" name="button">Register</button>
     </div>
     <div class="">
       <h2>Pets</h2>
       <select name="dropdown">
-        <option value="ownerName1">Name 1</option>
-        <option value="ownerName2" >Name 2</option>
-        <option value="ownerName3">Name 3</option>
+        <option id="ownerName1">Name 1</option>
+        <option id="ownerName2" >Name 2</option>
+        <option id="ownerName3">Name 3</option>
+        <input type="text" placeholder="Pet Name">
+        <input type="text" placeholder="Pet Color">
+        <input type="text" placeholder="Breed">
+        <button id="addPet"type="button" name="button">Add Pet</button>
       </select>
     </div>
     <table>
