@@ -61,8 +61,12 @@ router.post('/newCustomer', function(req, res){
       res.sendStatus(500);
     } else {
       // **** NEED VARIABLES FROM CLIENT-SIDE ****
+      var customer = req.body;
+      var first_name = customer.first_name;
+      var last_name = customer.last_name;
       // **** NEED DATABASE QUERY TEXT ****
-      db.query(queryText,[$1, $2, $3], function(errorMakingQuery, result){
+      var dbText = "INSERT INTO owners ('first_name', 'last_name') VAULES ($1, $2);";
+      db.query(queryText,[first_name, last_name], function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
           console.log('Attempted to query with', queryText);
