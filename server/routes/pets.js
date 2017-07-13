@@ -6,7 +6,7 @@ var poolModule = require('../modules/pool.js');
 var pool = poolModule;
 
 // Send all pets to client from DB using GET request
-router.get('/getPets', function(req, res){
+router.get('/', function(req, res){
   pool.connect(function(errorConnectingToDatabase, db, done){
     if(errorConnectingToDatabase) {
       console.log('Error connecting to the database.');
