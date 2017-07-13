@@ -13,7 +13,7 @@ router.get('/getPets', function(req, res){
       res.sendStatus(500);
     } else {
       // **** NEED DATABASE QUERY HERE ****
-      var queryText = 'SELECT * FROM pets;';
+      var queryText = '"pets"."color", "visits"."check_in_status" FROM owners JOIN pets ON "owners"."id" = "pets"."owner_id" JOIN visits ON "pets"."owner_id" = "visits"."pets_id";';
       db.query(queryText, function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
@@ -24,6 +24,7 @@ router.get('/getPets', function(req, res){
           console.log(queryText);
           res.send({pets: result.rows});
           // ***** DOUBLE CHECK ORDER OF ITEMS IN THE OBJECT *****
+          // owner, name, breed, color
           // ***** FIX FOR CLIENT-SIDE IF NECESSARY *****
         }
       }); // end query
@@ -132,7 +133,7 @@ router.delete('/:id', function(req, res){
           res.sendStatus(500);
         } else {
             // console.log(queryText);
-          res.send({todos: result.rows});
+          res.send({pets: result.rows});
         }
       }); // end query
     } // end if
@@ -182,7 +183,7 @@ router.put('/checkout/:id', function(req, res){
           res.sendStatus(500);
         } else {
             // console.log(queryText);
-          res.send({todos: result.rows});
+          res.send({pets: result.rows});
         }
       }); // end query
     } // end if
