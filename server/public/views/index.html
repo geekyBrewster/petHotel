@@ -8,48 +8,59 @@
 
   <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript"src="jquery.js"></script>
+    <script type="text/javascript"src="client.js"></script>
+    <script type="text/javascript"src=""></script>
+    <script type="text/javascript"src=""></script>
+
     </head>
      <body>
-      <!--Registration-->
-       <div class="container">
+      <!--Owner Registration-->
+       <div>
         <!-- <a href="#">Go to Visits</a> -->
         <h4 id="registration">Pet Owner Registration</h1>
           <form class="form-inline">
             <label class="sr-only" for="inlineFormInput">Name</label>
-            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="First Name">
+            <input type="text" class="fn form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="First Name">
             <label class="sr-only" for="inlineFormInputGroup">Username</label>
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Last Name">
+              <input type="text" class="ln form-control" id="inlineFormInputGroup" placeholder="Last Name">
             </div>
             <button type="submit" class=" register btn btn-outline-success">Register</button>
           </form>
-       </div><!--Registration-->
+       </div><!--Owner Registration-->
 
-       <form class="form-inline">
-         <label class="sr-only" for="inlineFormInput">Name</label>
-         <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="First Name">
-         <label class="sr-only" for="inlineFormInputGroup">Username</label>
-         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-           <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Last Name">
+       <!--Owner Dropdown-->
+       <!-- <div class="dropdown">
+         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Owners
+         </button>
+         <div class="owners dropdown-menu" aria-labelledby="dropdownMenu2">
+           <button class="dropdown-item" type="button">Owner 1</button>
+           <button class="dropdown-item" type="button">Owner 2</button>
+           <button class="dropdown-item" type="button">Owner 3</button>
          </div>
-         <button type="submit" class=" register btn btn-outline-success">Register</button>
-       </form>
+       </div> -->
+       <!--Owner Dropdown-->
 
 
-      <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Owners
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Name 1</a>
-        <a class="dropdown-item" href="#">Name 2</a>
-        <a class="dropdown-item" href="#">Name 3</a>
-      </div>
-    </div>
-            <!-- <button id="addPet" type="button" class="btn btn-outline-success">Add Pet</button> -->
+      <!--Form-->
+    <form class="form-inline">
+      <label class="sr-only" for="inlineFormInput">Name</label>
+      <input type="text" class="petName form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Pet Name">
 
-          </select>
-       </div><!--/Pets-->
+      <label class="sr-only" for="inlineFormInput">Name</label>
+      <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Color">
+
+      <label class="sr-only" for="inlineFormInput">Name</label>
+      <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Breed">
+
+      <button type="submit" class="btn btn-success">Add Pet</button>
+  </form><!--/Form-->
+  <!--Pet Entry-->
+
+
       <!--Table-->
       <div class="table">
         <table class="table table-hover thead-inverse">
